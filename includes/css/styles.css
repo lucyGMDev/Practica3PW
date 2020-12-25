@@ -1,0 +1,11 @@
+/*General Styles*/
+
+body{
+    background-color: gray;
+}
+.hidden{
+    display:none;
+}
+.show{
+    display: block;
+}
