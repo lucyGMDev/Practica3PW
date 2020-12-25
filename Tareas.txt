@@ -1,0 +1,5 @@
+-Login y logout (tenemos que pasar el codigo a servlet) M
+-Registrarse  (tenemos que pasar el codigo a servlet) M
+-Modificar Usuario  (tenemos que pasar el codigo a servlet y modificar la vista para que salgan los valores actuales del usuario) M
+-Mostrar tablon (en el indice mostrar los 10 ultimos anuncios del usuario) L
+-Crear anuncios (una vista mas el controlador) L
