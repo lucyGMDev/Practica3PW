@@ -81,9 +81,10 @@
                 <label for="tags">Temas</label><br/>
                 <%
                     Enumeration enumeration = temas.elements();
-                    while(enumeration.hasMoreElements()){
+                    Enumeration claves=temas.keys();
+                    while(enumeration.hasMoreElements() && claves.hasMoreElements()){
                         %>
-                        <input type="checkbox" value=""/><label><%=enumeration.nextElement()%></label>
+                        <input type="checkbox" value="<%=claves.nextElement()%>" name="tags"/><label><%=enumeration.nextElement()%></label>
                         <%
                     }
                 %>
