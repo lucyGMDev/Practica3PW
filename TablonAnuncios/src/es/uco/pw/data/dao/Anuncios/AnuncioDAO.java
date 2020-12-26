@@ -523,4 +523,6 @@ public class AnuncioDAO extends DAO{
 
         return status;
     }
+
+    
 }

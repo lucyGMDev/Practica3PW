@@ -203,6 +203,33 @@ public class ContactoDAO extends DAO {
         return ret;
     }
     
+    public ArrayList<String> ObtenerEmailContactos(){
+        ArrayList<String> ret = new ArrayList<String>();     
+        try{
+            
+            Connection conect = getConection();
+            
+            Properties sqlProp = new Properties();
+            InputStream is = new FileInputStream(sqlPropertiesPath);
+            sqlProp.load(is);
+            PreparedStatement ps = conect.prepareStatement(sqlProp.getProperty("getEmails.contacto"));
+            
+            ResultSet rs=ps.executeQuery();
+                 
+            while(rs.next()){
+                
+                String _email=rs.getString(1);
+
+                ret.add(_email);
+                
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return ret;
+        
+    }
 
 }
 

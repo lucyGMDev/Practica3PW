@@ -39,7 +39,7 @@
                 Fecha: <%=customerBean.getFechaNacimiento()%></br>
                 Lista Intereses: <%=customerBean.getIntereses()%></br>
                 <a href="/ControlContactos/mvc/view/modifyView.jsp">Modificar usuario</a><br/>
-                <a href="/ControlContactos/mvc/view/createAdd.jsp">Crear Anuncio</a><br/>
+                <a href="/ControlContactos/mvc/view/createAddView.jsp">Crear Anuncio</a><br/>
                 <a href="/ControlContactos/index.jsp?reset=1">LogOut</a><br/>
                 
         <%      
