@@ -12,4 +12,12 @@
         <param-name>PaginaRedireccionErrorLogin</param-name>
         <param-value>http://www.uco.es</param-value>
     </context-param>
+    <servlet>
+        <servlet-name>createAdd</servlet-name>
+        <servlet-class>mvc.control.createAddControllerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createAdd</servlet-name>
+        <url-pattern>/createAdd</url-pattern>
+    </servlet-mapping>
 </web-app>

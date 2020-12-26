@@ -47,7 +47,7 @@
     </head>
     <body>
         <h1>Introduzca el anuncio</h1>
-        <form method="post">
+        <form method="post" action="/ControlContactos/createAdd">
             <p>
                 <label for="title">Titulo<label>
                 <input type="text" name="title"/>
