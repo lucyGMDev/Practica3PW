@@ -15,19 +15,20 @@ public class createAddControllerServlet extends HttpServlet{
         Date fecha_publicación=new Date();
         String fecha_caducidad = request.getParameter("endDate");
         String[] temas=request.getParameterValues("tags");
+        String tipoPublicación=request.getParameter("estadoAnuncio");
         response.setContentType("text/html");
         PrintWriter out=response.getWriter();
         out.print("<!DOCTYPE html><html><body><h1>Anuncio</h1>");
         out.print("<p>Titulo: "+tituloAnuncio+"</p>");
         out.print("<p>Contenido: "+cuerpoAnuncio+"</p>");
         out.print("<p>Tipo Anuncio: "+tipoAnuncio+"</p>");
-        out.print("<p>Fecha Publicación: "+fecha_publicación+"</p>");
-        out.print("<p>Temas:</p>");
-        for(int i=0;i<temas.length;i++){
-            out.print("<p>"+temas[i]+"</p>");
-        }
-        out.print("<h2>Esto es una prueba</h2>");
-        out.print("<p>Fecha Caducidad: "+fecha_caducidad+"</p>");
+        out.print("<p>Fecha Publicación: </p>");
+        out.print("<p>Fecha Caducidad: </p>");
+        
+
+        out.print("<p>Tipo publicacion: "+tipoPublicación+"</p>");
+       
+        
         out.print("</body></html>");
     }
 }
