@@ -43,11 +43,11 @@
                 }
             }
         </script>
-        <link type="text/css" rel="stylesheet" href="/ControlContactos/includes/css/styles.css"/>
+        <link type="text/css" rel="stylesheet" href="/GestorAnuncios/includes/css/styles.css"/>
     </head>
     <body>
         <h1>Introduzca el anuncio</h1>
-        <form method="post" action="/ControlContactos/createAdd">
+        <form method="post" action="/GestorAnuncios/createAdd">
             <p>
                 <label for="title">Titulo<label>
                 <input type="text" name="title"/>
