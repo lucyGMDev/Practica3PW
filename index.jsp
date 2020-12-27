@@ -38,17 +38,17 @@
                 Apellidos: <%=customerBean.getApellidos()%></br>
                 Fecha: <%=customerBean.getFechaNacimiento()%></br>
                 Lista Intereses: <%=customerBean.getIntereses()%></br>
-                <a href="/ControlContactos/mvc/view/modifyView.jsp">Modificar usuario</a><br/>
-                <a href="/ControlContactos/mvc/view/createAddView.jsp">Crear Anuncio</a><br/>
-                <a href="/ControlContactos/index.jsp?reset=1">LogOut</a><br/>
+                <a href="/GestorAnuncios/mvc/view/modifyView.jsp">Modificar usuario</a><br/>
+                <a href="/GestorAnuncios/mvc/view/createAddView.jsp">Crear Anuncio</a><br/>
+                <a href="/GestorAnuncios/index.jsp?reset=1">LogOut</a><br/>
                 
         <%      
             }
             else{
         %>
 
-          <a href="/ControlContactos/mvc/view/loginView.jsp">Loggin</a></br>
-          <a href="/ControlContactos/mvc/view/signUpView.jsp">Registrarse</a></br>
+          <a href="/GestorAnuncios/mvc/view/loginView.jsp">Loggin</a></br>
+          <a href="/GestorAnuncios/mvc/view/signUpView.jsp">Registrarse</a></br>
         <%
             }
         %>
