@@ -13,7 +13,7 @@ public class CustomerBean implements Serializable{
     String email="";
     String nombre="";
     String apellidos="";
-    String contraseña="";
+    String contrasena="";
     Date fechaNacimiento=new Date();
     ArrayList<String> intereses=new ArrayList<String>();
 
@@ -35,11 +35,11 @@ public class CustomerBean implements Serializable{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;

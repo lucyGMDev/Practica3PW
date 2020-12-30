@@ -11,7 +11,7 @@
     String messageNextPage="";
     String dataBasePath=application.getInitParameter("AbsolutePath")+application.getInitParameter("sqlProperties");
     String email=request.getParameter("Email");
-    String contraseña=request.getParameter("password");
+    String contrasena=request.getParameter("password");
 
     if(customerBean== null || customerBean.getEmail().equals("")){
         if(email!=null){
@@ -20,8 +20,8 @@
             ContactoDAO contactoDAO = new ContactoDAO(dataBasePath);
             Contacto contact = contactoDAO.ObtenerContactoById(email);
             if(contact!=null){//El contacto existe
-                String contraseña_usuario=contactoDAO.ObtenerPasswordUsuario(contact.getEmail());
-                if(contraseña_usuario.equals(contraseña)){
+                String contrasena_usuario=contactoDAO.ObtenerPasswordUsuario(contact.getEmail());
+                if(contrasena_usuario.equals(contrasena)){
                     errorLoginBean.setNumerosIntentos(3);
 %> 
                     <jsp:setProperty property="email" value="<%=email%>" name="customerBean"/>

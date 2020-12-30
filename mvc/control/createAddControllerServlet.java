@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import es.uco.pw.display.useBean.CustomerBean;
 import es.uco.pw.business.Anuncios.TipoAnuncio;
 import es.uco.pw.business.Anuncios.AnuncioFlash;
+import es.uco.pw.business.Anuncios.AnuncioIndividualizado;
 import es.uco.pw.business.Anuncios.AnuncioTematico;
 import es.uco.pw.business.Anuncios.EstadoAnuncio;
 import es.uco.pw.business.Usuario.Contacto;
@@ -117,6 +118,10 @@ public class createAddControllerServlet extends HttpServlet{
             AnuncioFlashDTO anuncioFlashDTO=new AnuncioFlashDTO(tituloAnuncio,cuerpoAnuncio,fecha_publicación,fechaCaducidad,usuario,
                                                                 estadoAnuncio,destinataros);
             anuncioDAO.InsertarAnuncioFlash(anuncioFlashDTO);
+        }else if(tipoAnuncio==TipoAnuncio.Individualizado){
+            AnuncioIndividualizadoDTO anuncioIndividualizadoDTO = new AnuncioIndividualizadoDTO(tituloAnuncio,cuerpoAnuncio,fecha_publicación,usuario,
+                                                                     estadoAnuncio,destinataros);
+            anuncioDAO.InsertarAnuncioIndividualizado(anuncioIndividualizadoDTO);
         }
     }
 }
