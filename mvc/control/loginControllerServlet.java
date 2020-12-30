@@ -1,4 +1,4 @@
-package es.uco.pw.controllers;
+package mvc.control;
 
 
 
@@ -15,29 +15,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.*;
 
 
-/**
- * Servlet implementation class LoginController
- */
+@WebServlet(name="loginController", urlPatterns="/loginController")
 
-public class loginControllerServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public loginControllerServlet() {
-        // TODO Auto-generated constructor stub
-    }
+public class loginControllerServlet extends HttpServlet{
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+ protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
  {
 
@@ -49,15 +32,15 @@ response.setContentType("text/html;charset=UTF-8");
 
 String nextPage= "../../index.jsp";
 String messageNextPage="";
-String dataBasePath=application.getInitParameter("AbsolutePath")+application.getInitParameter("sqlProperties");
+String dataBasePath= request.getServletContext().getInitParameter("AbsolutePath")+request.getServletContext().getInitParameter("sqlProperties");
 String email=request.getParameter("Email");
-String contraseña=request.getParameter("password");
+String contrasena=request.getParameter("password");
 
 
 HttpSession session = request.getSession();
 
 
-CustomerBean customerBan=(CustomerBean)session.getAttribute("customerBean");
+CustomerBean customerBean=(CustomerBean)session.getAttribute("customerBean");
 ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBean");
 
 
@@ -73,13 +56,13 @@ ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBe
             ContactoDAO contactoDAO = new ContactoDAO(dataBasePath);
             Contacto contact = contactoDAO.ObtenerContactoById(email);
             if(contact!=null){//El contacto existe
-                String contraseña_usuario=contactoDAO.ObtenerPasswordUsuario(contact.getEmail());
-                if(contraseña_usuario.equals(contraseña)){
+                String contrasena_usuario=contactoDAO.ObtenerPasswordUsuario(contact.getEmail());
+                if(contrasena_usuario.equals(contrasena)){
                     errorLoginBean.setNumerosIntentos(3);
 
 
                      session.setAttribute("email", email);
-                    session.setAttribute("contraseña",contraseña);
+                    session.setAttribute("contraseña",contrasena);
                     session.setAttribute("nombre",contact.getName());
                    session.setAttribute("apellidos",contact.getLastName());
                    session.setAttribute("fechaNacimiento",contact.getBirthDate());
@@ -92,7 +75,7 @@ ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBe
                     
                     messageNextPage="La contraseña es incorrecta, te quedan "+numeroIntentos+" intentos</br>";
                     }else{
-                        nextPage=application.getInitParameter("PaginaRedireccionErrorLogin");
+                        nextPage=request.getServletContext().getInitParameter("PaginaRedireccionErrorLogin");
                         errorLoginBean.setNumerosIntentos(3);
                         response.sendRedirect(nextPage);
                     }
@@ -111,7 +94,7 @@ ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBe
 
 
                 }else{
-                    nextPage=application.getInitParameter("PaginaRedireccionErrorLogin");
+                    nextPage=request.getServletContext().getInitParameter("PaginaRedireccionErrorLogin");
                     errorLoginBean.setNumerosIntentos(3);
                     response.sendRedirect(nextPage);
                 }
@@ -127,16 +110,8 @@ ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBe
         
 }
 
-
-
 }
 
 }
     
-    
-    
 }
-
-
-
-
