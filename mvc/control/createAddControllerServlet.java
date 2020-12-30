@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import java.util.ArrayList;
 import es.uco.pw.display.useBean.CustomerBean;
 import es.uco.pw.business.Anuncios.TipoAnuncio;
+import es.uco.pw.business.Anuncios.AnuncioFlash;
 import es.uco.pw.business.Anuncios.AnuncioTematico;
 import es.uco.pw.business.Anuncios.EstadoAnuncio;
 import es.uco.pw.business.Usuario.Contacto;
@@ -62,22 +63,14 @@ public class createAddControllerServlet extends HttpServlet{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String fechaPublicacionString="";
         Date fecha_publicación=null;
-        String mensaje="No hay error";
+        
         try{
             fechaPublicacionString=sdf.format(new Date());
             fecha_publicación=sdf.parse(fechaPublicacionString);
         }catch(Exception e){
-            mensaje=e.toString();
+            e.printStackTrace();
         }
-        String fechaCaducidadString=request.getParameter("endDate");
-        Date fechaCaducidad=null;
-        if(tipoAnuncio == TipoAnuncio.Flash){
-            try{
-                fechaCaducidad=sdf.parse(fechaCaducidadString);
-            }catch(Exception e){
-                e.printStackTrace();
-            } 
-        }
+        
         
         String estadoAnuncioString=request.getParameter("estadoAnuncio");
         EstadoAnuncio estadoAnuncio=EstadoAnuncio.valueOf(estadoAnuncioString);
@@ -112,7 +105,18 @@ public class createAddControllerServlet extends HttpServlet{
                                                                          estadoAnuncio,destinataros,temas);
             anuncioDAO.InsertarAnuncioTematico(anuncioTematicoDTO);
         }else if(tipoAnuncio==TipoAnuncio.Flash){
-            
+            String fechaCaducidadString=request.getParameter("endDate");
+            Date fechaCaducidad=null;
+            if(tipoAnuncio == TipoAnuncio.Flash){
+                try{
+                    fechaCaducidad=sdf.parse(fechaCaducidadString);
+                }catch(Exception e){
+                    e.printStackTrace();
+                } 
+            }
+            AnuncioFlashDTO anuncioFlashDTO=new AnuncioFlashDTO(tituloAnuncio,cuerpoAnuncio,fecha_publicación,fechaCaducidad,usuario,
+                                                                estadoAnuncio,destinataros);
+            anuncioDAO.InsertarAnuncioFlash(anuncioFlashDTO);
         }
     }
 }

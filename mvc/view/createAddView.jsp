@@ -6,6 +6,8 @@
 <%@ page import="java.util.Hashtable"%>
 <%@ page import="java.util.Enumeration"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -154,7 +156,20 @@
             </div>
             <div id="endDate" class="hidden">
                 <label for="endDate">Fecha Caducidad</label>
-                <input type="Date" id="endDate" name="endDate"/>
+                <%
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String fechaMinimaString="";
+                    Date fechaMinima=null;
+        
+                    try{
+                        //Dia actual mas un dia
+                        fechaMinimaString=sdf.format(new Date(new Date().getTime()+(1000*60*60*24)));
+                        fechaMinima=sdf.parse(fechaMinimaString);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                %>
+                <input type="Date" id="endDate" name="endDate" min="<%=fechaMinimaString%>"/>
 
             </div>
             <div id="individualized"> 
