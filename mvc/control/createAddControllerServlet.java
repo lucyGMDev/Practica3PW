@@ -78,7 +78,7 @@ public class createAddControllerServlet extends HttpServlet{
             } 
         }
         String[] temas=request.getParameterValues("tags");
-<<<<<<< HEAD
+
         String estadoAnuncioString=request.getParameter("estadoAnuncio");
         EstadoAnuncio estadoAnuncio=EstadoAnuncio.valueOf(estadoAnuncioString);
         String[] arrayDestinatarios=request.getParameterValues("destinatarios");
@@ -103,8 +103,6 @@ public class createAddControllerServlet extends HttpServlet{
         }else if(tipoAnuncio == TipoAnuncio.Tematico){
             
         }
-=======
 
->>>>>>> 3fc375d0df5651f7599fc3aeb9e6144fdd0008bb
     }
 }
