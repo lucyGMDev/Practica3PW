@@ -97,23 +97,26 @@ public class AnuncioDAO extends DAO{
         return status;
     }
 
-    public int InsertarAnuncioGeneral(AnuncioGeneralDTO anuncio){
+    public String InsertarAnuncioGeneral(AnuncioGeneralDTO anuncio){
         int status=0;
-
+        String message="Funciona bien";
         try{
             Connection conect = getConection();
             Properties sqlProp = new Properties();
             InputStream is = new FileInputStream(sqlPropertiesPath);
             sqlProp.load(is);
             PreparedStatement ps = conect.prepareStatement(sqlProp.getProperty("insertar.AnuncioGeneral"));
+            
             ps.setString(1, anuncio.getTipoAnuncio().toString());
             ps.setString(2,anuncio.getTitulo());
             ps.setString(3,anuncio.getCuerpo());
+            
             java.sql.Date fechaPublicacion=new java.sql.Date(anuncio.getFechaPublicacion().getTime());
             // DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
             // String fecha = dateFormat.format(anuncio.getFechaPublicacion());
             // java.sql.Date fechaPublicacion=new java.sql.Date(dateFormat.parse(fecha).getTime());
             ps.setDate(4, fechaPublicacion);
+            message="Cargo bien la fecha";
             ps.setString(5,anuncio.getPropietario().getEmail());
             ps.setString(6,anuncio.getEstadoAnuncio().toString());
             status=ps.executeUpdate();
@@ -126,12 +129,12 @@ public class AnuncioDAO extends DAO{
                 psDestinatario.setString(2, c.getEmail());
                 psDestinatario.executeUpdate();
             }
-
+            message="funciona bien";
         }catch(Exception e){
-            System.out.println(e);
+            e.toString();
         }
 
-        return status;
+        return message;
     }
 
     public int InsertarAnuncioFlash(AnuncioFlashDTO anuncio){

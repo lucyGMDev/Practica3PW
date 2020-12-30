@@ -11,65 +11,125 @@
     <head>
         <script>
             function show(addType) {
-                if(addType=="tematic"){
+                if(addType=="Tematico"){
                     var tags=document.getElementById("tags");
                     var endDate=document.getElementById("endDate");
-                    var individualized=document.getElementById("individualized");
+                    
                     tags.className="show";
                     endDate.className="hidden";
-                    individualized.className="hidden";
-                }else if(addType=="flash"){
+                 
+                }else if(addType=="Flash"){
                     var tags=document.getElementById("tags");
                     var endDate=document.getElementById("endDate");
-                    var individualized=document.getElementById("individualized");
+                    
                     tags.className="hidden";
                     endDate.className="show";
-                    individualized.className="hidden";
-                }else if(addType=="individualized"){
-                    var tags=document.getElementById("tags");
-                    var endDate=document.getElementById("endDate");
-                    var individualized=document.getElementById("individualized");
-                    tags.className="hidden";
-                    endDate.className="hidden";
-                    individualized.className="show";
-                    
+                  
                 }else{
                     var tags=document.getElementById("tags");
                     var endDate=document.getElementById("endDate");
-                    var individualized=document.getElementById("individualized");
+                    
                     tags.className="hidden";
                     endDate.className="hidden";
-                    individualized.className="hidden";
+                    
                 }
             }
+
+            function validacion(){
+                var titulo=document.getElementById("titulo").value;
+                titulo=titulo.trim();
+                if(titulo==""){
+                    alert("El titulo no puede estar vacío");
+                    return false;
+                }
+                var cuerpoAnuncio=document.getElementById("cuerpoAnuncio").value;
+                cuerpoAnuncio=cuerpoAnuncio.trim();
+                if(cuerpoAnuncio==""){
+                    
+                    alert("El cuerpo del anuncio no puede estár vacío");
+                    return false;
+                }
+                var tipoAnuncio=document.crearAnuncio.addType.value;
+                
+                if(tipoAnuncio=="General"){
+                    
+                }else if(tipoAnuncio=="Tematico"){
+                    var temasAnuncio=document.getElementsByName("tags");
+                    var contTemas=0;
+                    
+                    for(let i=0;i<temasAnuncio.length;i++){
+                        if(temasAnuncio[i].checked){
+                            contTemas++;
+                        }
+                    }
+
+                    if(contTemas==0){
+                        alert("Tienes que seleccionar al menos un tema en los anuncios temáticos");
+                        return false;
+                    }         
+
+                }else if(tipoAnuncio=="Flash"){
+                    
+                    //Todo Hacer que la fecha de caducidad solo puede ser mayor 
+
+                    
+                }else if(tipoAnuncio=="Individualizado"){
+                    var destinatarios=document.getElementsByName("destinatarios");
+                    var contDestinatarios=0;
+                    for(let i=0;i<destinatarios.length;i++){
+                        if(destinatarios[i].checked){
+                            contDestinatarios++;
+                        }
+                    }
+
+                    if(contDestinatarios==0){
+                        alert("En un anuncio individualizado, hay que seleccionar al menos un tema");
+                        return false;
+                    }
+                }else{
+                    alert("Debes seleccionar un tipo de anuncio");
+                    return false;
+                }
+            
+                var estadoAnuncio = document.crearAnuncio.estadoAnuncio.value;
+                if(estadoAnuncio!= "editado" && estadoAnuncio!="publicado"){
+                    alert("El estado de publicación no puede estar vacio");
+                    return false;
+                }
+
+               
+                
+                return true;
+            }
+
         </script>
-        <link type="text/css" rel="stylesheet" href="/ControlContactos/includes/css/styles.css"/>
+        <link type="text/css" rel="stylesheet" href="/GestorAnuncios/includes/css/styles.css"/>
     </head>
     <body>
         <h1>Introduzca el anuncio</h1>
-        <form method="post" action="/ControlContactos/createAdd">
+        <form method="post" action="/GestorAnuncios/createAdd" onsubmit="return validacion()" name="crearAnuncio">
             <p>
                 <label for="title">Titulo<label>
-                <input type="text" name="title"/>
+                <input type="text" name="title" id="titulo"/>
             </p>
             <p>
-                <label for="content">Cuerpo del Anuncio<label>
-                <input type="textarea" name="content"/>
+                <label for="content" >Cuerpo del Anuncio<label><br/>
+                <textarea name="content" id="cuerpoAnuncio" rows="10" cols="50"></textarea>
+                
             </p>
             <p>
                 <label for="addType">Tipo Anuncio<label><br/>
                 
-                <input type="radio" name="addType" value="generic" onchange="show(this.value)" checked/>
+                <input type="radio" name="addType" value="General" onchange="show(this.value)" checked/>
                 <label for="generic">General</lable><br/>
                 
-                <input type="radio" name="addType" value="tematic" onchange="show(this.value)"/>
-                <label for="tematic">Tematico</lable><br/>
+                <input type="radio" name="addType" value="Tematico" onchange="show(this.value)"/>
+                <label for="Tematico">Tematico</lable><br/>
+                <input type="radio" name="addType" value="Flash" onchange="show(this.value)"/>
+                <label for="Flash">Flash</lable><br/>
                 
-                <input type="radio" name="addType" value="flash" onchange="show(this.value)"/>
-                <label for="flash">Flash</lable><br/>
-                
-                <input type="radio" name="addType" value="individualized" onchange="show(this.value)"/>
-                <label for="individualized">Individual</lable><br/>           
+                <input type="radio" name="addType" value="Individualizado" onchange="show(this.value)"/>
+                <label for="Individualizado">Individual</lable><br/>           
 
             </p>
             <div id="tags" class="hidden">
@@ -94,10 +154,10 @@
             </div>
             <div id="endDate" class="hidden">
                 <label for="endDate">Fecha Caducidad</label>
-                <input type="Date" name="endDate"/>
+                <input type="Date" id="endDate" name="endDate"/>
 
             </div>
-            <div id="individualized" class="hidden"> 
+            <div id="individualized"> 
             <%
 
                 ContactoDAO contactoDAO= new ContactoDAO(dataBasePath);
@@ -105,11 +165,11 @@
 
             %>
                 
-                <label for="individualized">Individualizado</label><br/>
+                <label for="individualized">Destinatarios: </label><br/>
             <%
                 for(String email : usuarios){
             %>
-                    <input type="checkbox" value="<%=email%>"/><label><%=email%></label>
+                    <input type="checkbox" value="<%=email%>" name="destinatarios"/><label><%=email%></label>
             <%
                 }
             %>
@@ -117,7 +177,7 @@
             </div>
             <label for="estadoAnuncio">Estado del Anuncio: </label>
             <input type="radio" value="publicado" name="estadoAnuncio"/><label>Publicado</label> 
-            <input type="radio" value="editado" name="estadoAnuncio"/><label>En Edicion</label>  
+            <input type="radio" value="editado" name="estadoAnuncio" checked/><label>En Edicion</label>  
             <br/>
             <input type="submit" value="Crear Anuncio"/>
         </form>
