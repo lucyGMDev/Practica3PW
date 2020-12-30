@@ -107,11 +107,7 @@
     </head>
     <body>
         <h1>Introduzca el anuncio</h1>
-<<<<<<< HEAD
         <form method="post" action="/GestorAnuncios/createAdd" onsubmit="return validacion()" name="crearAnuncio">
-=======
-        <form method="post" action="/GestorAnuncios/createAdd">
->>>>>>> 3fc375d0df5651f7599fc3aeb9e6144fdd0008bb
             <p>
                 <label for="title">Titulo<label>
                 <input type="text" name="title" id="titulo"/>

@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import java.util.ArrayList;
 import es.uco.pw.display.useBean.CustomerBean;
 import es.uco.pw.business.Anuncios.TipoAnuncio;
+import es.uco.pw.business.Anuncios.AnuncioTematico;
 import es.uco.pw.business.Anuncios.EstadoAnuncio;
 import es.uco.pw.business.Usuario.Contacto;
 import es.uco.pw.data.dao.Anuncios.AnuncioDAO;
@@ -77,8 +78,7 @@ public class createAddControllerServlet extends HttpServlet{
                 e.printStackTrace();
             } 
         }
-        String[] temas=request.getParameterValues("tags");
-<<<<<<< HEAD
+        
         String estadoAnuncioString=request.getParameter("estadoAnuncio");
         EstadoAnuncio estadoAnuncio=EstadoAnuncio.valueOf(estadoAnuncioString);
         String[] arrayDestinatarios=request.getParameterValues("destinatarios");
@@ -96,15 +96,23 @@ public class createAddControllerServlet extends HttpServlet{
             AnuncioGeneralDTO anuncioGeneralDTO= new AnuncioGeneralDTO(tituloAnuncio,cuerpoAnuncio,fecha_publicación,
                                                                         usuario,estadoAnuncio,destinataros);
             
-            mensaje=anuncioDAO.InsertarAnuncioGeneral(anuncioGeneralDTO);
-            PrintWriter out = response.getWriter();
-            response.setContentType("text/html");           
-            out.print("<!DOCTYPE html><html><body><h1>"+mensaje+"</h1></body></html>");
+            anuncioDAO.InsertarAnuncioGeneral(anuncioGeneralDTO);
+            
         }else if(tipoAnuncio == TipoAnuncio.Tematico){
+            String[] temasArray=request.getParameterValues("tags");
+            ArrayList<String> temas=new ArrayList<String>();
+            
+            if(temasArray!=null){
+                for(int i=0;i<temasArray.length;i++){
+                    temas.add(temasArray[i]);
+                }
+            }
+
+            AnuncioTematicoDTO anuncioTematicoDTO=new AnuncioTematicoDTO(tituloAnuncio,cuerpoAnuncio,fecha_publicación,usuario,
+                                                                         estadoAnuncio,destinataros,temas);
+            anuncioDAO.InsertarAnuncioTematico(anuncioTematicoDTO);
+        }else if(tipoAnuncio==TipoAnuncio.Flash){
             
         }
-=======
-
->>>>>>> 3fc375d0df5651f7599fc3aeb9e6144fdd0008bb
     }
 }
