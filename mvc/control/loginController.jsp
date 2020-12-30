@@ -25,7 +25,7 @@
                     errorLoginBean.setNumerosIntentos(3);
 %> 
                     <jsp:setProperty property="email" value="<%=email%>" name="customerBean"/>
-                    <jsp:setProperty property="contraseña" value="<%=contraseña%>" name="customerBean"/>
+                    <jsp:setProperty property="contrasena" value="<%=contrasena%>" name="customerBean"/>
                     <jsp:setProperty property="nombre" value="<%=contact.getName()%>" name="customerBean"/>
                     <jsp:setProperty property="apellidos" value="<%=contact.getLastName()%>" name="customerBean"/>
                     <jsp:setProperty property="fechaNacimiento" value="<%=contact.getBirthDate()%>" name="customerBean"/>

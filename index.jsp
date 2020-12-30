@@ -33,7 +33,7 @@
         %>
                 
                 Email: <%=customerBean.getEmail()%></br>
-                Contraseña: <%=customerBean.getContraseña()%></br>
+                Contraseña: <%=customerBean.getContrasena()%></br>
                 Nombre: <%=customerBean.getNombre()%></br>
                 Apellidos: <%=customerBean.getApellidos()%></br>
                 Fecha: <%=customerBean.getFechaNacimiento()%></br>
@@ -41,7 +41,10 @@
                 <a href="/GestorAnuncios/mvc/view/modifyView.jsp">Modificar usuario</a><br/>
                 <a href="/GestorAnuncios/mvc/view/createAddView.jsp">Crear Anuncio</a><br/>
                 <a href="/GestorAnuncios/index.jsp?reset=1">LogOut</a><br/>
-                
+                <hr/>
+
+        <%
+        %>  
         <%      
             }
             else{
