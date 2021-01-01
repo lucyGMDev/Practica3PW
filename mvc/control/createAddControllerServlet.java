@@ -123,5 +123,8 @@ public class createAddControllerServlet extends HttpServlet{
                                                                      estadoAnuncio,destinataros);
             anuncioDAO.InsertarAnuncioIndividualizado(anuncioIndividualizadoDTO);
         }
+
+        RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
+        disp.include(request,response);
     }
 }

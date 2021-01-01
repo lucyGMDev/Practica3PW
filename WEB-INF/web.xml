@@ -20,4 +20,12 @@
         <servlet-name>createAdd</servlet-name>
         <url-pattern>/createAdd</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>homePage</servlet-name>
+        <servlet-class>mvc.control.homePageServlets</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>homePage</servlet-name>
+        <url-pattern>/homePage</url-pattern>
+    </servlet-mapping>
 </web-app>

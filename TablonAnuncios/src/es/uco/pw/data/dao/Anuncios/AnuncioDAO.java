@@ -19,6 +19,7 @@ import es.uco.pw.business.DTO.DTOAnuncio.AnuncioGeneralDTO;
 import es.uco.pw.business.DTO.DTOAnuncio.AnuncioIndividualizadoDTO;
 import es.uco.pw.business.DTO.DTOAnuncio.AnuncioTematicoDTO;
 import es.uco.pw.business.Usuario.Contacto;
+import es.uco.pw.data.dao.Intereses.InteresesDAO;
 import es.uco.pw.data.dao.common.DAO;
 
 public class AnuncioDAO extends DAO{
@@ -302,9 +303,18 @@ public class AnuncioDAO extends DAO{
                 String emailPropietario = rs.getString(7);
                 EstadoAnuncio estadoAnuncio = EstadoAnuncio.valueOf(rs.getString(8));
                 
-                ArrayList<String>temas = null;
-                if(tipoAnuncio.equals(TipoAnuncio.Tematico))
-                    temas=new ArrayList<String>(Arrays.asList(rs.getString(9).split(",")));
+                ArrayList<String>temas=null;
+                if(tipoAnuncio.equals(TipoAnuncio.Tematico)){
+                    temas=new ArrayList<String>();
+                    ArrayList<String>temasId = null;
+                    temasId=new ArrayList<String>(Arrays.asList(rs.getString(9).split(",")));
+                    InteresesDAO interesesDAO = new InteresesDAO(sqlPropertiesPath);
+                    Hashtable<Integer,String> intereses = interesesDAO.DevolverIntereses();
+                    for(String interes : temasId){
+                        temas.add(intereses.get(Integer.parseInt(interes)));
+                    }
+
+                }
                 ArrayList<String>destinatarios = ObtenerDestinatariosAnuncio(id);
                 AnuncioDTO anuncioDTO=new AnuncioDTO(id, tipoAnuncio, titulo, cuerpo, fechaPublicacion, fechaFin, emailPropietario, estadoAnuncio, temas,destinatarios);
 
