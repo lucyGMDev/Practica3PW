@@ -30,7 +30,7 @@ public class loginControllerServlet extends HttpServlet{
 
 
 
-        String nextPage= "/GestorAnuncios/homePage";
+        String nextPage= "/homePage";
         String messageNextPage="";
         String dataBasePath= request.getServletContext().getInitParameter("AbsolutePath")+request.getServletContext().getInitParameter("sqlProperties");
         String email=request.getParameter("Email");
@@ -61,7 +61,7 @@ public class loginControllerServlet extends HttpServlet{
                         customerBean.setApellidos(contact.getLastName());
                         customerBean.setFechaNacimiento(contact.getBirthDate());
                         customerBean.setIntereses(contact.getTagsLists());
-                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePage");
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
                         dispatcher.forward(request, response);
                         
 
