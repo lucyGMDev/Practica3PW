@@ -51,8 +51,9 @@ CustomerBean customerBean=(CustomerBean)session.getAttribute("customerBean");
                     String apellidos=request.getParameter("Apellidos");
                     String fechaString = request.getParameter("Fecha_Nacimiento");
                     java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                    java.util.Date fecha=null;
                     try{
-                        java.util.Date fecha=format.parse(fechaString);
+                        fecha=format.parse(fechaString);
 
                     }
 
