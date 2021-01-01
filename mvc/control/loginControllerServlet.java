@@ -61,12 +61,13 @@ ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBe
                     errorLoginBean.setNumerosIntentos(3);
 
 
-                     session.setAttribute("email", email);
-                    session.setAttribute("contraseña",contrasena);
-                    session.setAttribute("nombre",contact.getName());
-                   session.setAttribute("apellidos",contact.getLastName());
-                   session.setAttribute("fechaNacimiento",contact.getBirthDate());
-                    session.setAttribute("intereses",contact.getTagsLists());
+                     customerBean.setEmail(email);
+                     customerBean.setContrasena(contrasena);
+                     customerBean.setNombre(contact.getName());
+                    customerBean.setApellidos(contact.getLastName());
+                   customerBean.setFechaNacimiento(contact.getBirthDate());
+                    customerBean.setIntereses(contact.getTagsLists());
+                    
 
                 }else{
                     int numeroIntentos=errorLoginBean.getNumerosIntentos()-1;
@@ -109,6 +110,8 @@ ErrorLoginBean errorLoginBean=(ErrorLoginBean)session.getAttribute("errorLoginBe
     dispatcher.forward(request, response);
         
 }
+
+
 
 }
 
