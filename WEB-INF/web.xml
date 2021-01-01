@@ -20,4 +20,31 @@
         <servlet-name>createAdd</servlet-name>
         <url-pattern>/createAdd</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+    <servlet-name>loginController</servlet-name>
+    <servlet-class>mvc.control.loginControllerServlet</servlet-class>
+
+</servlet>
+
+
+<servlet-mapping>
+        <servlet-name>loginController</servlet-name>
+        <url-pattern>/loginController</url-pattern>
+    </servlet-mapping>
+
+
+     <servlet>
+    <servlet-name>signUpController</servlet-name>
+    <servlet-class>mvc.control.signUpControllerServlet</servlet-class>
+
+</servlet>
+
+
+<servlet-mapping>
+        <servlet-name>signUpController</servlet-name>
+        <url-pattern>/signUpController</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
