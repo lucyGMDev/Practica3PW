@@ -16,10 +16,10 @@
     </head>
     <body>
        <%
-            String nextPage = "../controller/loginController.jsp";
+            String nextPage = "/GestorAnuncios/loginController";
             String messageNextPage = request.getParameter("message");
             if(customerBean!=null && customerBean.getEmail()!=""){
-                nextPage="../../index.jsp";
+                nextPage="/homePage";
             %>
                 <jsp:forward page="<%=nextPage%>"></jsp:forward>
             <%
@@ -31,7 +31,7 @@
 
        %>
        <%=messageNextPage%><br/>
-        <form action="../control/loginController.jsp" method="post">
+        <form action="/GestorAnuncios/loginController" method="post">
         	<label for="Email">Email</label>
             <input type="text" name="Email" size="50" required>
             <br/>

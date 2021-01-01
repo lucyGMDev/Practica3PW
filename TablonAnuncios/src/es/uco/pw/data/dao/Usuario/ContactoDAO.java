@@ -45,10 +45,10 @@ public class ContactoDAO extends DAO {
             
             status = ps.executeUpdate();
 
-            PreparedStatement psContraseña = conect.prepareStatement(sqlProp.getProperty("insertar.Password"));
-            psContraseña.setString(1, contact.getEmail());
-            psContraseña.setString(2, password);
-            status=psContraseña.executeUpdate();
+            PreparedStatement psContrasena = conect.prepareStatement(sqlProp.getProperty("insertar.Password"));
+            psContrasena.setString(1, contact.getEmail());
+            psContrasena.setString(2, password);
+            status=psContrasena.executeUpdate();
 
         }catch(Exception e){
             e.printStackTrace();
