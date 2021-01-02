@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.*" %>
+  <%@ page import="java.io.*" %>
+
+
 <%-- <%@ page errorPage="/includes/errorPage.jsp"%> --%>
 
 <jsp:useBean id="customerBean" scope="session" class="es.uco.pw.display.useBean.CustomerBean"></jsp:useBean>
@@ -47,7 +52,12 @@
             <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
             <input type="date" name="Fecha_Nacimiento" required>
             <p> Intereses </p>
-     		    <%while (claves.hasMoreElements()){
+     		    <%
+                HashTable<Integer,String> intereses= (HashTable<Integer,String>)request.getAttribute("intereses");
+                Enumeration elementos= (Enumeration)request.getAttribute("elementos");
+                Enumeration claves= (Enumeration)request.getAttribute("claves");
+                
+                while (claves.hasMoreElements()){
           %>
                 <label><input type="checkbox" name="interes" value="<%=claves.nextElement()%>"><%=elementos.nextElement()%></label>
                 <br>
