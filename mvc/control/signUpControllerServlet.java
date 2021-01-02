@@ -6,9 +6,12 @@ import es.uco.pw.display.useBean.CustomerBean;
 import es.uco.pw.data.dao.Usuario.ContactoDAO;
 import es.uco.pw.business.Usuario.Contacto;
 import es.uco.pw.business.DTO.DTOUsuario.ContactoDTO;
+import es.uco.pw.data.dao.Intereses.InteresesDAO;
 
 
 import java.io.IOException;
+import java.util.Hashtable;
+import java.util.enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
@@ -31,6 +34,14 @@ response.setContentType("text/html;charset=UTF-8");
 String nextPage="../../index.jsp";
 String messageNextPage="";
 String dataBasePath=request.getServletContext().getInitParameter("AbsolutePath")+request.getServletContext().getInitParameter("sqlProperties");
+InteresesDAO interesesDAO = new InteresesDAO(dataBasePath);
+Hashtable<Integer, String> intereses= interesesDAO. DevolverIntereses();
+Enumeration elementos = intereses.elements();
+Enumeration claves = intereses.keys();
+
+request.setAttribute("intereses", intereses);
+request.setAttribute("elementos", elementos);
+request.setAttribute("claves", claves);
 
 
 HttpSession session = request.getSession();
