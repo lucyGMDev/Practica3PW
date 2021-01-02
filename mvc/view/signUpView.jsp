@@ -47,16 +47,13 @@
             <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
             <input type="date" name="Fecha_Nacimiento" required>
             <p> Intereses </p>
-     		    <label><input type="checkbox" name="interes" value="Lectura"> Lectura</label>
-     		    <label><input type="checkbox" name="interes" value="Cine"> Cine</label>
-     		    <label><input type="checkbox" name="interes" value="Deportes"> Deportes</label>
-     		    <label><input type="checkbox" name="interes" value="Videojuegos"> Videojuegos</label>
-     		    <label><input type="checkbox" name="interes" value="Música"> M&uacute;sica</label>
-     		    <label><input type="checkbox" name="interes" value="Series"> Series</label>
-     		    <label><input type="checkbox" name="interes" value="Programación"> Programaci&oacute;n</label>
-     		    <label><input type="checkbox" name="interes" value="Fotografía"> Fotograf&iacute;a</label>
-     		    <label><input type="checkbox" name="interes" value="Pintura"> Pintura</label>
-     		    <label><input type="checkbox" name="interes" value="Baile"> Baile</label>
+     		    <%while (claves.hasMoreElements()){
+          %>
+                <label><input type="checkbox" name="interes" value="<%=claves.nextElement()%>"><%=elementos.nextElement()%></label>
+                <br>
+           <%
+      }
+    %>
             
      		<br> <br>
             <input type="submit" value="Registrarse">   
