@@ -49,5 +49,14 @@
         <url-pattern>/signUpController</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>createAddLoad</servlet-name>
+        <servlet-class>mvc.control.createAddLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createAddLoad</servlet-name>
+        <url-pattern>/createAddLoad</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

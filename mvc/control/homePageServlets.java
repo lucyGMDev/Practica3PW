@@ -30,7 +30,7 @@ public class homePageServlets extends HttpServlet{
         CustomerBean customerBean = (CustomerBean)session.getAttribute("customerBean");
         
         
-        //Si no estas logeado mostramos anuncios generales
+        //Si no estas logeado mostramos anuncios generales que puede ver cualquier usuario
         if(customerBean ==null || customerBean.getEmail() == ""){
             while(cont<numAnuncios && enumAnuncios.hasMoreElements()){
                 AnuncioDTO nextAnuncio=(AnuncioDTO)enumAnuncios.nextElement();
@@ -50,7 +50,7 @@ public class homePageServlets extends HttpServlet{
                     
                 }
             }
-        }else{//Si esta loggeado mostramos anuncios personalizados
+        }else{//Si esta loggeado mostramos anuncios personalizados para el usuario
             while(cont<numAnuncios && enumAnuncios.hasMoreElements()){
                 AnuncioDTO nextAnuncio=(AnuncioDTO)enumAnuncios.nextElement();
                 if(nextAnuncio.getEstadoAnuncio() != EstadoAnuncio.publicado){
@@ -84,7 +84,7 @@ public class homePageServlets extends HttpServlet{
                 listaAnuncios.add(nextAnuncio);
                 cont++;
             }
-        }
+        } 
         request.setAttribute("listaAnuncios",listaAnuncios);
         RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
         disp.include(request,response);

@@ -35,7 +35,7 @@ public class createAddControllerServlet extends HttpServlet{
         }else{
             //En el caso de que este registrado nunca debe acceder a este formulario por url, solo por post
             //a traves de su vista, por lo que en caso de que acceda al servlet por url lo redirecciono a la vista+
-            response.sendRedirect("/GestorAnuncios/mvc/view/createAddView.jsp");
+            response.sendRedirect("createAddLoad");
         }
     }
     
@@ -124,7 +124,7 @@ public class createAddControllerServlet extends HttpServlet{
             anuncioDAO.InsertarAnuncioIndividualizado(anuncioIndividualizadoDTO);
         }
 
-        RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
-        disp.include(request,response);
+        RequestDispatcher disp = request.getRequestDispatcher("homePage");
+        disp.forward(request,response);
     }
 }
