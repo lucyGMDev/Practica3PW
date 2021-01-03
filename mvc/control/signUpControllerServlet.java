@@ -11,7 +11,7 @@ import es.uco.pw.data.dao.Intereses.InteresesDAO;
 
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.enumeration;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
@@ -35,11 +35,11 @@ String nextPage="../../index.jsp";
 String messageNextPage="";
 String dataBasePath=request.getServletContext().getInitParameter("AbsolutePath")+request.getServletContext().getInitParameter("sqlProperties");
 InteresesDAO interesesDAO = new InteresesDAO(dataBasePath);
-Hashtable<Integer, String> intereses= interesesDAO. DevolverIntereses();
-Enumeration elementos = intereses.elements();
-Enumeration claves = intereses.keys();
+Hashtable<Integer, String> intereses_totales= interesesDAO.DevolverIntereses();
+Enumeration elementos = intereses_totales.elements();
+Enumeration claves = intereses_totales.keys();
 
-request.setAttribute("intereses", intereses);
+request.setAttribute("intereses_totales", intereses_totales);
 request.setAttribute("elementos", elementos);
 request.setAttribute("claves", claves);
 
