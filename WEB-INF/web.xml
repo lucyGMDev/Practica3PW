@@ -59,4 +59,14 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>signUpLoad</servlet-name>
+        <servlet-class>mvc.control.signUpLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signUpLoad</servlet-name>
+        <url-pattern>/signUpLoad</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
