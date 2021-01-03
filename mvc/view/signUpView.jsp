@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.*" %>
-  <%@ page import="java.io.*" %>
+<%@ page import="java.io.*" %>
 
 
 <%-- <%@ page errorPage="/includes/errorPage.jsp"%> --%>
@@ -53,12 +53,17 @@
             <input type="date" name="Fecha_Nacimiento" required>
             <p> Intereses </p>
      		    <%
-                HashTable<Integer,String> intereses= (HashTable<Integer,String>)request.getAttribute("intereses");
+                Hashtable<Integer,String> intereses= (Hashtable<Integer,String>)request.getAttribute("intereses_totales");
                 Enumeration elementos= (Enumeration)request.getAttribute("elementos");
                 Enumeration claves= (Enumeration)request.getAttribute("claves");
+
+                %>
                 
-                while (claves.hasMoreElements()){
-          %>
+               <%
+
+               while (claves.hasMoreElements())
+               {
+                    %>
                 <label><input type="checkbox" name="interes" value="<%=claves.nextElement()%>"><%=elementos.nextElement()%></label>
                 <br>
            <%
