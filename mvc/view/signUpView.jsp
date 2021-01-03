@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="java.util.*" %>
-<%@ page import="java.io.*" %>
+<%@ page import="java.util.Enumeration" %>
 
 
 <%-- <%@ page errorPage="/includes/errorPage.jsp"%> --%>
@@ -53,10 +52,23 @@
             <input type="date" name="Fecha_Nacimiento" required>
             <p> Intereses </p>
      		    <%
-                Hashtable<Integer,String> intereses= (Hashtable<Integer,String>)request.getAttribute("intereses_totales");
+                
                 Enumeration elementos= (Enumeration)request.getAttribute("elementos");
+
+                
                 Enumeration claves= (Enumeration)request.getAttribute("claves");
 
+                if (elementos == null || claves == null)
+                {
+
+                    %>
+
+                    <jsp:forward page="/signUpLoad"></jsp:forward>
+
+
+                    <%
+                }
+              
                 %>
                 
                <%
