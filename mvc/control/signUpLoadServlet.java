@@ -19,7 +19,7 @@ import javax.servlet.http.*;
 
 public class signUpLoadServlet extends HttpServlet{
 
- protected void doPost(HttpServletRequest request, HttpServletResponse response)
+ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
 
 {
@@ -40,5 +40,11 @@ dispatcher.forward(request, response);
 
 }
 
+ protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+
+{
+    doGet(request,response);
+}
 
 }
