@@ -24,9 +24,6 @@ public class signUpLoadServlet extends HttpServlet{
 
 {
 
-response.setContentType("text/html;charset=UTF-8");
-
-
 String dataBasePath=request.getServletContext().getInitParameter("AbsolutePath")+request.getServletContext().getInitParameter("sqlProperties");
 InteresesDAO interesesDAO = new InteresesDAO(dataBasePath);
 Hashtable<Integer, String> intereses_totales= interesesDAO.DevolverIntereses();
