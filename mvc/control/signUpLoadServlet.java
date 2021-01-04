@@ -35,7 +35,7 @@ Enumeration claves = intereses_totales.keys();
 request.setAttribute("elementos", elementos);
 request.setAttribute("claves", claves);
 
-RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/signUpView.jsp");
+RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mvc/view/signUpView.jsp");
 
 dispatcher.forward(request, response);
 
