@@ -210,8 +210,8 @@ public class AnuncioDAO extends DAO{
     }
 
     
-    public Hashtable<Integer, AnuncioDTO> ObtenerAnunciosUsuario(String email){
-        Hashtable<Integer,AnuncioDTO> ret = new Hashtable<Integer,AnuncioDTO>();
+    public ArrayList<AnuncioDTO> ObtenerAnunciosUsuario(String email){
+        ArrayList<AnuncioDTO> ret = new ArrayList<AnuncioDTO>();
         try{
             Connection conect = getConection();
             Properties sqlProp = new Properties();
@@ -219,7 +219,6 @@ public class AnuncioDAO extends DAO{
             sqlProp.load(is);
             PreparedStatement ps = conect.prepareStatement(sqlProp.getProperty("getByEmailPropietario.Anuncio"));
             ps.setString(1, email);
-            ps.setString(2, EstadoAnuncio.archivado.toString());
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 int id=rs.getInt(1);
@@ -235,12 +234,20 @@ public class AnuncioDAO extends DAO{
                 EstadoAnuncio estadoAnuncio = EstadoAnuncio.valueOf(rs.getString(8));
                 
                 ArrayList<String>temas = null;
-                if(tipoAnuncio.equals(TipoAnuncio.Tematico))
-                    temas=new ArrayList<String>(Arrays.asList(rs.getString(9).split(",")));
+                if(tipoAnuncio.equals(TipoAnuncio.Tematico)){
+                    temas=new ArrayList<String>();
+                    ArrayList<String>temasId = null;
+                    temasId=new ArrayList<String>(Arrays.asList(rs.getString(9).split(",")));
+                    InteresesDAO interesesDAO = new InteresesDAO(sqlPropertiesPath);
+                    Hashtable<Integer,String> intereses = interesesDAO.DevolverIntereses();
+                    for(String interes : temasId){
+                        temas.add(intereses.get(Integer.parseInt(interes)));
+                    }
+                }
                 ArrayList<String> destinatarios= ObtenerDestinatariosAnuncio(id);
                 AnuncioDTO anuncioDTO=new AnuncioDTO(id, tipoAnuncio, titulo, cuerpo, fechaPublicacion, fechaFin, emailPropietario, estadoAnuncio, temas,destinatarios);
 
-                ret.put(id, anuncioDTO);
+                ret.add(anuncioDTO);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -280,8 +287,8 @@ public class AnuncioDAO extends DAO{
         return status;
     }
 
-    public Hashtable<Integer, AnuncioDTO> ObtenerAnuncios(){
-        Hashtable<Integer, AnuncioDTO> ret=new Hashtable<Integer, AnuncioDTO>();
+    public ArrayList<AnuncioDTO> ObtenerAnuncios(){
+        ArrayList<AnuncioDTO> ret=new ArrayList<AnuncioDTO>();
 
         try{
             Connection conect = getConection();
@@ -318,7 +325,7 @@ public class AnuncioDAO extends DAO{
                 ArrayList<String>destinatarios = ObtenerDestinatariosAnuncio(id);
                 AnuncioDTO anuncioDTO=new AnuncioDTO(id, tipoAnuncio, titulo, cuerpo, fechaPublicacion, fechaFin, emailPropietario, estadoAnuncio, temas,destinatarios);
 
-                ret.put(id, anuncioDTO);
+                ret.add(anuncioDTO);
             }
         }catch(Exception e){
             e.printStackTrace();

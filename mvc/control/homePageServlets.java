@@ -20,8 +20,7 @@ public class homePageServlets extends HttpServlet{
     {
         String dataBasePath= request.getServletContext().getInitParameter("AbsolutePath")+request.getServletContext().getInitParameter("sqlProperties");
         AnuncioDAO anuncioDAO = new AnuncioDAO(dataBasePath);
-        Hashtable<Integer, AnuncioDTO> anuncios = anuncioDAO.ObtenerAnuncios();
-        Enumeration enumAnuncios=anuncios.elements();
+        ArrayList<AnuncioDTO> anuncios = anuncioDAO.ObtenerAnuncios();
         int numAnuncios=20;
         int cont=0;
         ArrayList<AnuncioDTO> listaAnuncios=new ArrayList<AnuncioDTO>();
@@ -32,8 +31,7 @@ public class homePageServlets extends HttpServlet{
         
         //Si no estas logeado mostramos anuncios generales que puede ver cualquier usuario
         if(customerBean ==null || customerBean.getEmail() == ""){
-            while(cont<numAnuncios && enumAnuncios.hasMoreElements()){
-                AnuncioDTO nextAnuncio=(AnuncioDTO)enumAnuncios.nextElement();
+            for(AnuncioDTO nextAnuncio : anuncios){
                 if(nextAnuncio.getTipo()!=TipoAnuncio.Tematico && nextAnuncio.getTipo()!=TipoAnuncio.Individualizado){
                     //Si el anuncio no esta publicado no se muestra 
                     if(nextAnuncio.getEstadoAnuncio() != EstadoAnuncio.publicado){
@@ -48,11 +46,12 @@ public class homePageServlets extends HttpServlet{
                     listaAnuncios.add(nextAnuncio);
                     cont++;
                     
+                    if(cont>=numAnuncios) break;
                 }
             }
         }else{//Si esta loggeado mostramos anuncios personalizados para el usuario
-            while(cont<numAnuncios && enumAnuncios.hasMoreElements()){
-                AnuncioDTO nextAnuncio=(AnuncioDTO)enumAnuncios.nextElement();
+            for(AnuncioDTO nextAnuncio : anuncios){
+                
                 if(nextAnuncio.getEstadoAnuncio() != EstadoAnuncio.publicado){
                     continue;
                 }
@@ -83,6 +82,8 @@ public class homePageServlets extends HttpServlet{
 
                 listaAnuncios.add(nextAnuncio);
                 cont++;
+
+                if(cont>=numAnuncios) break;
             }
         } 
         request.setAttribute("listaAnuncios",listaAnuncios);

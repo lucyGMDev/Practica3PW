@@ -66,6 +66,7 @@
                 <a href="/GestorAnuncios/mvc/view/modifyView.jsp">Modificar usuario</a><br/>
                 <a href="/GestorAnuncios/createAddLoad">Crear Anuncio</a><br/>
                 <a href="/GestorAnuncios/index.jsp?reset=1">LogOut</a><br/>
+                <a href="/GestorAnuncios/showUserAddLoad">Mostrar tus anuncios</a><br/>
                 <hr/>
 
             

@@ -58,5 +58,23 @@
         <url-pattern>/createAddLoad</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>showUserAddLoad</servlet-name>
+        <servlet-class>mvc.control.showUserAddLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showUserAddLoad</servlet-name>
+        <url-pattern>/showUserAddLoad</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>modifyAddLoad</servlet-name>
+        <servlet-class>mvc.control.modifyAddLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>modifyAddLoad</servlet-name>
+        <url-pattern>/modifyAddLoad</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
