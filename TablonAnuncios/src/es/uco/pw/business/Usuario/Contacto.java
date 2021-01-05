@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * 
  * <li>Apellidos</li>
  * 
- * <li>Fecha de nacimiento</li>
+ * <li>Fecha de nacimiento (en formato dd-mm-aaaa)</li>
  * <li>Lista de intereses</li>
  * 
  *
@@ -39,16 +39,7 @@ public class Contacto {
     private Date birthDate;
     private ArrayList<String> tagsLists;
 
-    /**
-     * Constructor de Contacto, al cual se le pasan como parámetros los atributos
-     * descritos arriba
-     * 
-     * @param email
-     * @param name
-     * @param lastName
-     * @param birthDate
-     * @param tagsList
-     */
+   
     public Contacto(String email, String name, String lastName, Date birthDate, ArrayList<String> tagsLists) {
         this.email = email;
         this.name = name;
@@ -57,93 +48,60 @@ public class Contacto {
         this.setTagsLists(tagsLists);
     }
 
-    /**
-     * @return La lista de tags
-     */
+    
     public ArrayList<String> getTagsLists() {
         return tagsLists;
     }
 
 
-    /**
-    * 
-    * @param tagsLists La lista de intereses del usuario
-    */
+    
     public void setTagsLists(ArrayList<String> tagsLists) {
         this.tagsLists = tagsLists;
     }
 
-    /**
-     * @return El e-mail del usuario
-     */
+    
     public String getEmail() {
         return email;
     }
 
  
 
-    /**
-     * 
-     * @return La fecha de nacimiento en formato "dd - mm - aaaa"
-     */
+    
 
     public Date getBirthDate() {
         return birthDate;
     }
 
-   /**
-    * 
-    * @param birthDate La fecha de nacimiento en formato "dd - mm - aaaa"
-    */
+  
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
    
-    /**
-     * 
-     * 
-     * 
-     * @return Los apellidos del usuario, siendo una cadena del tipo "apellido_1 + apellido_2"
-     */
+   
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     * 
-     * @param lastName Los apellidos del usuario, siendo una cadena del tipo "apellido_1 + apellido_2"
-     */
+    
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    /**
-     * 
-     * @return El nombre de pila del usuario
-     */
-
+   
     public String getName() {
         return name;
     }
 
 
-    /**
-     * 
-     * 
-     * @param name nombre de pila del usuario
-     */
-
+   
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * 
-     * @param email El correo electrónico del usuario
-     */
+    
    
     public void setEmail(String email) {
         this.email = email;
