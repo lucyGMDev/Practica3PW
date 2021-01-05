@@ -8,11 +8,14 @@ import es.uco.pw.business.Anuncios.EstadoAnuncio;
 import es.uco.pw.business.Anuncios.TipoAnuncio;
 import es.uco.pw.business.Usuario.Contacto;
 
+
+/**
+ * DTO de anuncio general
+ */
+
 public class AnuncioGeneralDTO implements Serializable {
 
-    /**
-     *
-     */
+   
     private static final long serialVersionUID = 1L;
 
     private TipoAnuncio tipoAnuncio;

@@ -7,6 +7,10 @@ import java.util.Date;
 import es.uco.pw.business.Anuncios.EstadoAnuncio;
 import es.uco.pw.business.Anuncios.TipoAnuncio;
 
+
+/**
+ * DTO de anuncio (de forma general)
+ */
 public class AnuncioDTO implements Serializable {
 
     /**
@@ -102,6 +106,9 @@ public class AnuncioDTO implements Serializable {
         this.temas = temas;
     }
 
+    /**
+     * M&eacute;todo que imprime por pantalla todos los datos del anuncio
+     */
     @Override
     public String toString() {
         String cadena="";
