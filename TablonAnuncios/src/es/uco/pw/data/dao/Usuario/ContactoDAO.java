@@ -15,11 +15,26 @@ import java.util.Properties;
 import es.uco.pw.business.DTO.DTOUsuario.ContactoDTO;
 import es.uco.pw.business.Usuario.Contacto;
 
+
+/**
+ * 
+ * DAO que realiza diferentes operaciones sobre los usuarios presentes en la base de datos
+ *
+ */
 public class ContactoDAO extends DAO {
 
     public ContactoDAO(String sqlPropertiesPath){
         super(sqlPropertiesPath);
     }
+    
+    /**
+     * 
+     * M&eacute;todo que inserta a un usuario
+     * 
+     * @param contact Instancia de ContactoDTO que generar&aacute; la conexi&oacute; con la base de datos
+     * @param password Contrase&ntilde;a del usuario
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
     public int InsertarContacto(ContactoDTO contact,String password){
         int status=0;
         try{
@@ -57,6 +72,14 @@ public class ContactoDAO extends DAO {
     }
 
    
+    
+    /**
+     * 
+     * M&eacute;todo que elimina a un usuario
+     * 
+     * @param contact Instancia de una clase Contacto
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int BorrarContacto(Contacto contact){
         int status=0;
@@ -75,6 +98,15 @@ public class ContactoDAO extends DAO {
         return status;
     }
 
+    
+    
+    /**
+     * 
+     * M&eacute;todo que modifica a un usuario
+     * 
+     * @param contactoDTO Instancia de ContactoDTO que generar&aacute; la conexi&oacute; con la base de datos
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
     public int ModificarContacto(ContactoDTO contactoDTO){
        
         int status=0;
@@ -105,6 +137,14 @@ public class ContactoDAO extends DAO {
         }
         return status;
     }
+    
+    /**
+     * 
+     * M&eacute;todo que obtiene los datos de un contacto a trav&eacute;s de su email
+     * 
+     * @param email Email del usuario en cuesti&uacute;n
+     * @return Una tabla hash donde la clave es el nombre de cada atributo y el contenido su valor
+     */
 
     public Hashtable<String,String> ObtenerContacto(String email){
         Hashtable<String,String> ret = new Hashtable<String,String>();
@@ -142,6 +182,13 @@ public class ContactoDAO extends DAO {
     }
 
 
+    /**
+     * 
+     * M&eacute;todo que obtiene la instancia de un contacto a trav&eacute;s de su email
+     * 
+     * @param email Email del usuario en cuesti&uacute;n
+     * @return Instancia de Contacto con los datos de este
+     */
 
     public Contacto ObtenerContactoById(String email){
         Contacto ret = null;
@@ -176,6 +223,14 @@ public class ContactoDAO extends DAO {
         return ret;
     }
 
+    
+    /**
+     * 
+     * M&eacute;todo que obtiene la contrase&ntilde;a de un usuario a trav&eacute;s de su email
+     * 
+     * @param email Email del usuario en cuesti&uacute;n
+     * @return Contrase&ntilde;a de este
+     */
     public String ObtenerPasswordUsuario(String email){
         String ret ="";
        
@@ -203,6 +258,13 @@ public class ContactoDAO extends DAO {
         return ret;
     }
     
+    
+    /**
+     * 
+     * M&eacute;todo que obtiene todos los emails de los contactos registrados
+     *
+     * @return Una lista de strings donde cada elemento es el email de un usuario determinado
+     */
     public ArrayList<String> ObtenerEmailContactos(){
         ArrayList<String> ret = new ArrayList<String>();     
         try{
