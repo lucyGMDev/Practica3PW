@@ -84,26 +84,26 @@ CustomerBean customerBean=(CustomerBean)session.getAttribute("customerBean");
                 }else{
                     messageNextPage="Las contraseñas no coinciden";
                     nextPage="../view/signUpView.jsp";
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/signUpView.jsp");
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mvc/view/signUpView.jsp");
                 dispatcher.forward(request, response);
                 }
             }else{
                 messageNextPage="Ya hay un usuario con el email introducido";
                 nextPage="../view/signUpView.jsp";
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/signUpView.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mvc/view/signUpView.jsp");
                 dispatcher.forward(request, response);
             }
         }else{
            
             nextPage="../view/signUpView.jsp";
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/signUpView.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mvc/view/signUpView.jsp");
             dispatcher.forward(request, response);
         }
     }
 
 
 
-RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../../index.jsp");
+RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
                 dispatcher.forward(request, response);
 
 
