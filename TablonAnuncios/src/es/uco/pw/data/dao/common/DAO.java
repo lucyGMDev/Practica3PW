@@ -8,12 +8,26 @@ import java.util.Properties;
 
 
 
-
+/**
+ * 
+ * 
+ * 
+ * 
+ * Clase DAO utilizada para obtener informaci&oacute;n desde la base de datos utilizando la API JDBC y el fichero de propiedades sql.properties
+ *
+ */
 public class DAO {
     protected String sqlPropertiesPath;
     public DAO(String sqlPropertiesPath){
         this.sqlPropertiesPath=sqlPropertiesPath;
     }
+    
+    /**
+     * 
+     * Función que obtiene la conexi&oacute;n con la base de datos
+     * 
+     * @return una instancia de la misma
+     */
     protected Connection getConection(){
         Connection conect = null;
         try{
