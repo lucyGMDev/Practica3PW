@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+
+/**
+ *DTO de un contacto registrado en la aplicaci&oacute;n
+ */
 public class ContactoDTO implements Serializable{
 
-    /**
-     *
-     */
+ 
     private static final long serialVersionUID = 1L;
     
     private String email;
