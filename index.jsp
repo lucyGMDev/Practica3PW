@@ -75,7 +75,7 @@
             else{
         %>
 
-                <a href="/GestorAnuncios/mvc/view/loginView.jsp">Loggin</a></br>
+                <a href="/GestorAnuncios/mvc/view/loginView.jsp">Iniciar sesión</a></br>
                 <a href="/GestorAnuncios/signUpLoad">Registrarse</a></br>
         <%
             }
