@@ -74,7 +74,7 @@ CustomerBean customerBean=(CustomerBean)session.getAttribute("customerBean");
             customerBean.setFechaNacimiento(contactoDTO.getBirthDate());
             customerBean.setIntereses(contactoDTO.getTagsLists());
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
                 dispatcher.forward(request, response);
 
         }else{//El customerBean tiene un email que no es valido
