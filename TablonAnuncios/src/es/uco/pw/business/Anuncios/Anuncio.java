@@ -5,7 +5,31 @@ import java.util.Date;
 
 import es.uco.pw.business.Usuario.Contacto;
 
-
+/**
+ * 
+ * Clase que representa a un anuncio (de manera general) con los siguientes atributos:
+ * 
+ * <ul>
+ * 
+ * <li>Id</li>
+ * 
+ * <li>Tipo</li>
+ * 
+ * <li>T&iacute;tulo</li>
+ * 
+ * <li>Cuepo</li>
+ * <li>Fecha de publicaci&oacute;n</li>
+ * 
+ *<li> Estado </li>
+ *
+ *<li> Lista de destinatarios </li>
+ * </ul>
+ * 
+ * 
+ * 
+ 
+ *
+ */
 public abstract class Anuncio {
     protected int id;
     protected TipoAnuncio tipoAnuncio;
@@ -16,6 +40,7 @@ public abstract class Anuncio {
     protected EstadoAnuncio estadoAnuncio;
     protected ArrayList<Contacto> destinatarios;
 
+    
     public Anuncio(int id, TipoAnuncio tipoAnuncio, String titulo, String cuerpo, Date fecha_publicacion,
             Contacto propietario, EstadoAnuncio estadoAnuncio, ArrayList<Contacto> destinatarios) {
         this.id = id;

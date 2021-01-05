@@ -5,6 +5,13 @@ import java.util.Date;
 
 import es.uco.pw.business.Usuario.Contacto;
 
+
+/**
+ * 
+ * 
+ * Clase que representa a un anuncio individualizado
+ *
+ */
 public class AnuncioIndividualizado extends Anuncio {
 
     public AnuncioIndividualizado(int id, String titulo, String cuerpo, Date fecha_publicacion,

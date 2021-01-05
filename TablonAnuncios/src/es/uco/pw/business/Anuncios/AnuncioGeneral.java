@@ -5,6 +5,12 @@ import java.util.Date;
 
 import es.uco.pw.business.Usuario.Contacto;
 
+
+/**
+ * 
+ * 
+ * Clase que representa a un anuncio general
+ */
 public class AnuncioGeneral extends Anuncio {
 
     public AnuncioGeneral(int id, String titulo, String cuerpo, Date fecha_publicacion,

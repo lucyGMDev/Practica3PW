@@ -8,7 +8,13 @@ import es.uco.pw.business.Usuario.Contacto;
 
 
 
-
+/**
+ * 
+ * 
+ * Clase que representa a un anuncio flash, con las mismas propiedades que un anuncio general (adem&aacute;s
+ * de una fecha de finalizaci&oacute;n)
+ *
+ */
 public class AnuncioFlash extends Anuncio {
     private Date fecha_fin;
 
