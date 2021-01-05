@@ -10,11 +10,25 @@ import java.util.Properties;
 
 import es.uco.pw.data.dao.common.DAO;
 
+
+/**
+ * 
+ * DAO que obtiene todos los intereses almacenados en la base de datos, funcionando igual que el DAO general
+ *
+ */
 public class InteresesDAO extends DAO {
 
     public InteresesDAO(String sqlPropertiesPath){
         super(sqlPropertiesPath);
     }
+    
+    /**
+     * 
+     * Método que obtiene todos los intereses
+     * 
+     * @return Una tabla hash con estos, donde la clave es su id (llave primaria en la base de datos) y 
+     * el valor el nombre en s &iacute; del inter&eacute;s
+     */
     public Hashtable<Integer, String> DevolverIntereses() {
         Hashtable<Integer, String> ret = new Hashtable<Integer, String>();
 
