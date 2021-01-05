@@ -63,7 +63,7 @@
                 Apellidos: <%=customerBean.getApellidos()%></br>
                 Fecha: <%=customerBean.getFechaNacimiento()%></br>
                 Lista Intereses: <%=customerBean.getIntereses()%></br>
-                <a href="/GestorAnuncios/mvc/view/modifyView.jsp">Modificar usuario</a><br/>
+                <a href="/GestorAnuncios/modifyController">Modificar usuario</a><br/>
                 <a href="/GestorAnuncios/createAddLoad">Crear Anuncio</a><br/>
                 <a href="/GestorAnuncios/index.jsp?reset=1">LogOut</a><br/>
                 <a href="/GestorAnuncios/showUserAddLoad">Mostrar tus anuncios</a><br/>
@@ -76,7 +76,7 @@
         %>
 
                 <a href="/GestorAnuncios/mvc/view/loginView.jsp">Loggin</a></br>
-                <a href="/GestorAnuncios/mvc/view/signUpView.jsp">Registrarse</a></br>
+                <a href="/GestorAnuncios/signUpLoad">Registrarse</a></br>
         <%
             }
         %>
