@@ -22,6 +22,10 @@ import es.uco.pw.business.Usuario.Contacto;
 import es.uco.pw.data.dao.Intereses.InteresesDAO;
 import es.uco.pw.data.dao.common.DAO;
 
+/**
+ * DAO que realiza diferentes operaciones sobre los anuncios presentes en la base de datos
+ */
+
 public class AnuncioDAO extends DAO{
    
     public AnuncioDAO(String sqlPropertiesPath){
@@ -54,6 +58,11 @@ public class AnuncioDAO extends DAO{
         return maxID;
     }
 
+    /**
+     * M&eacute;todo que inserta un anuncio tem&aacute;tico
+     * @param anuncio DTO de Anuncio Tem&aacute;tico
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
     public int InsertarAnuncioTematico(AnuncioTematicoDTO anuncio){
         int status=0;
         try{
@@ -98,6 +107,12 @@ public class AnuncioDAO extends DAO{
         return status;
     }
 
+    /**
+     * M&eacute;todo que inserta un anuncio general
+     * @param anuncio DTO de Anuncio General
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
+    
     public String InsertarAnuncioGeneral(AnuncioGeneralDTO anuncio){
         int status=0;
         String message="Funciona bien";
@@ -137,6 +152,12 @@ public class AnuncioDAO extends DAO{
 
         return message;
     }
+    
+    /**
+     * M&eacute;todo que inserta un anuncio flash
+     * @param anuncio DTO de Anuncio Flash
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int InsertarAnuncioFlash(AnuncioFlashDTO anuncio){
         int status=0;
@@ -175,7 +196,11 @@ public class AnuncioDAO extends DAO{
         return status;
     }
 
-
+    /**
+     * M&eacute;todo que inserta un anuncio individualizado
+     * @param anuncio DTO de Anuncio Individualizado
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
     public int InsertarAnuncioIndividualizado(AnuncioIndividualizadoDTO anuncio){
         int status=0;
 
@@ -209,6 +234,12 @@ public class AnuncioDAO extends DAO{
         return status;
     }
 
+    
+    /**
+     * M&eacute;todo que obtiene el conjunto de anuncios de un determinado usuario
+     * @param email Email del usuario en cuest&oacute;n
+     * @return Lista con dichos anuncios
+     */
     
     public ArrayList<AnuncioDTO> ObtenerAnunciosUsuario(String email){
         ArrayList<AnuncioDTO> ret = new ArrayList<AnuncioDTO>();
@@ -254,6 +285,12 @@ public class AnuncioDAO extends DAO{
         }
         return ret;
     }
+    
+    /**
+     * M&eacute;todo que borra los destinatarios de un anuncio
+     * @param id Identificador del anuncio
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int BorrarAnuncioDestinatarios(int id){
         int status=0;
@@ -286,6 +323,11 @@ public class AnuncioDAO extends DAO{
         }
         return status;
     }
+    
+    /**
+     * M&eacute;todo que obtiene todos los anuncios
+     * @return Una lista con DTOs de cada anuncio
+     */
 
     public ArrayList<AnuncioDTO> ObtenerAnuncios(){
         ArrayList<AnuncioDTO> ret=new ArrayList<AnuncioDTO>();
@@ -332,6 +374,12 @@ public class AnuncioDAO extends DAO{
         }
         return ret;
     }
+    
+    /**
+     * M&eacute;todo que obtiene los destinatarios de un anuncio en concreto
+     * @param id Identificador del anuncio
+     * @return Una lista con ellos
+     */
 
     public ArrayList<String> ObtenerDestinatariosAnuncio(int id){
         ArrayList<String> destinatarios = new ArrayList<String>();
@@ -352,6 +400,12 @@ public class AnuncioDAO extends DAO{
 
         return destinatarios;
     }
+    
+    /**
+     * M&eacute;todo que archiva un determinado anuncio
+     * @param id Identificador del anuncio
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int ArchivarAnuncio(int id){
         int status=0;
@@ -370,6 +424,12 @@ public class AnuncioDAO extends DAO{
 
         return status;
     }
+    
+    /**
+     * M&eacute;todo que obtiene un anuncio
+     * @param id Identificador del anuncio
+     * @return Un DTO del anuncio en cuesti&oacute;n
+     */
 
     public AnuncioDTO ObtenerAnuncioID(int id){
         AnuncioDTO anuncioDTO=null;
@@ -406,6 +466,13 @@ public class AnuncioDAO extends DAO{
         }
         return anuncioDTO;
     }
+    
+    
+    /**
+     * M&eacute;todo que permite modificar un anuncio general
+     * @param anuncioDTO DTO del anuncio en cuesti&oacute;n
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int ModificarAnuncioGeneral(AnuncioDTO anuncioDTO){
         int status=0;
@@ -437,6 +504,12 @@ public class AnuncioDAO extends DAO{
         return status;
     }
     
+    /**
+     * M&eacute;todo que permite modificar un anuncio individualizado
+     * @param anuncioDTO DTO del anuncio en cuesti&oacute;n
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
+    
     public int ModificarAnuncioIndividualizado(AnuncioDTO anuncioDTO){
         int status=0;
         try{
@@ -466,6 +539,12 @@ public class AnuncioDAO extends DAO{
 
         return status;
     }
+    
+    /**
+     * M&eacute;todo que permite modificar un anuncio tem&aacute;tico
+     * @param anuncioDTO DTO del anuncio en cuesti&oacute;n
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int ModificarAnuncioTematico(AnuncioDTO anuncioDTO){
         int status=0;
@@ -510,6 +589,12 @@ public class AnuncioDAO extends DAO{
 
         return status;
     }
+    
+    /**
+     * M&eacute;todo que permite modificar un anuncio flash
+     * @param anuncioDTO DTO del anuncio en cuesti&oacute;n
+     * @return Un entero que indica el n&uacute;mero de filas afectadas por la operaci&oacute;n
+     */
 
     public int ModificarAnuncioFlash(AnuncioDTO anuncioDTO){
         int status=0;
