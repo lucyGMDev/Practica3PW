@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Clase que contiene los datos referentes sesi&oacute;n actual del usuario (todos los atributos de este)
+ */
 public class CustomerBean implements Serializable{
 
-	/**
-	 *
-	 */
+	
 	private static final long serialVersionUID = 1L;
     String email="";
     String nombre="";
