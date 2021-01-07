@@ -37,7 +37,7 @@
 
        %>
        <%=messageNextPage%><br/>
-        <form action="../control/signUpController.jsp" method="post">
+        <form action="/GestorAnuncios/signUpController" method="post">
         	<label for="Email">Email</label>
             <input type="text" name="Email" size="50" required>
             <label for="password">Contrase&ntilde;a</label>

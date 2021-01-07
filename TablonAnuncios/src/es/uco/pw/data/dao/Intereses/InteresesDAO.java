@@ -24,7 +24,7 @@ public class InteresesDAO extends DAO {
     
     /**
      * 
-     * Método que obtiene todos los intereses
+     * Metodo que obtiene todos los intereses
      * 
      * @return Una tabla hash con estos, donde la clave es su id (llave primaria en la base de datos) y 
      * el valor el nombre en s &iacute; del inter&eacute;s

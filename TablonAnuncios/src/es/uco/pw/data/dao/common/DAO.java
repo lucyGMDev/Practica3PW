@@ -24,7 +24,7 @@ public class DAO {
     
     /**
      * 
-     * Función que obtiene la conexi&oacute;n con la base de datos
+     * Funcion que obtiene la conexi&oacute;n con la base de datos
      * 
      * @return una instancia de la misma
      */

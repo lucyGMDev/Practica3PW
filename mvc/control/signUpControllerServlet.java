@@ -14,10 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.*;
 
-
-@WebServlet(name="signUpController", urlPatterns="/signUpController")
-
-
 public class signUpControllerServlet extends HttpServlet{
 
  protected void doPost(HttpServletRequest request, HttpServletResponse response)
