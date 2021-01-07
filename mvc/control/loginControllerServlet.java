@@ -61,14 +61,13 @@ public class loginControllerServlet extends HttpServlet{
                         customerBean.setApellidos(contact.getLastName());
                         customerBean.setFechaNacimiento(contact.getBirthDate());
                         customerBean.setIntereses(contact.getTagsLists());
-                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
-                        dispatcher.forward(request, response);
+                        
                         
 
                     }else{
                         int numeroIntentos=errorLoginBean.getNumerosIntentos()-1;
                         if(numeroIntentos>0){
-                            nextPage="../view/loginView.jsp";
+                            nextPage="/mvc/view/loginView.jsp";
                             
                             messageNextPage="La contraseña es incorrecta, te quedan "+numeroIntentos+" intentos</br>";
                         }else{
@@ -80,14 +79,13 @@ public class loginControllerServlet extends HttpServlet{
                     }                
                 }else{
                     int numeroIntentos=errorLoginBean.getNumerosIntentos()-1;
-                    nextPage="../view/loginView.jsp";
+                    nextPage="/mvc/view/loginView.jsp";
                     if(numeroIntentos>0){
-                        nextPage="../view/loginView.jsp";
+                        nextPage="/mvc/view/loginView.jsp";
                         
                         messageNextPage="No existe ningun contacto con email "+email+ " te quedan "+numeroIntentos+" intentos</br>";
 
-                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/loginView.jsp");
-                        dispatcher.forward(request, response);
+                        
 
 
                     }else{
@@ -97,19 +95,22 @@ public class loginControllerServlet extends HttpServlet{
                     }
                     errorLoginBean.setNumerosIntentos(numeroIntentos);
 
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/loginView.jsp");
-                    dispatcher.forward(request, response);
+                    
     
                 }
             }else{
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("../view/loginView.jsp");
-                dispatcher.forward(request, response);
+                	nextPage="../view/loginView.jsp";
             
             }
 
 
 
         }
+
+
+RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+
 
     }
     
