@@ -15,7 +15,7 @@ public class modifyAddLoadServlet extends HttpServlet{
     {
         HttpSession session=request.getSession();
         CustomerBean customerBean = (CustomerBean)session.getAttribute("customerBean");
-        if(customerBean == null || customerBean.getEmail()==""){//Si no está loggeado debe logguearse
+        if(customerBean == null || customerBean.getEmail()==""){//Si el usuario no está logueado, debe hacerlo
             response.sendRedirect("/GestorAnuncios/mvc/view/loginView.jsp");
         }
         String idAnuncioString=request.getParameter("idAnuncio");
@@ -29,7 +29,7 @@ public class modifyAddLoadServlet extends HttpServlet{
         AnuncioDAO anuncioDAO = new AnuncioDAO(dataBasePath);
         AnuncioDTO anuncio = anuncioDAO.ObtenerAnuncioID(idAnuncio);
 
-        //Si se le pasa el id de un anuncio que no te pertenece se muestra la pagina para ver tus anuncios
+        //Si se le pasa el id de un anuncio que no le pertenece, se muestra la página para ver los suyos
         if(anuncio.getEmailPropietario()!=customerBean.getEmail()){
             RequestDispatcher disp = request.getRequestDispatcher("/homePage");
             disp.forward(request,response);
