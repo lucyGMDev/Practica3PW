@@ -35,12 +35,18 @@
             <%
         }   
         %>
+
+
+        <link href=<%out.println(request.getContextPath()+"/includes/css/styles.css");%>  type="text/css" rel="stylesheet" />
+
         
     </head>
+
+
     <body>
-    
+
         
-        <h1>Bienvenido</h1>
+        <h1 style="">Bienvenido</h1>
         <%
             String message = request.getParameter("message");
             
@@ -74,9 +80,21 @@
             }
             else{
         %>
+        		
+        		<p style="text-align:left;">
 
                 <a href="/GestorAnuncios/mvc/view/loginView.jsp">Iniciar sesión</a></br>
+
+            
+
+            <span style="float:right;">
                 <a href="/GestorAnuncios/signUpLoad">Registrarse</a></br>
+
+                <span/>
+
+            </p>
+
+
         <%
             }
         %>
