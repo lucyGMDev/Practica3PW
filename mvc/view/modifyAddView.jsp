@@ -23,6 +23,9 @@
         <%
             }
         %>
+        
+        <link href=<%out.println(request.getContextPath()+"/includes/css/styles.css");%>  type="text/css" rel="stylesheet" />
+        
     </head>
     <body>
         <form>
